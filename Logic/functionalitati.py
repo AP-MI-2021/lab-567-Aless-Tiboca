@@ -9,7 +9,7 @@ def discount(lista):
                 getId(comanda),
                 getTitlu(comanda),
                 getGen(comanda),
-                getPret(comanda) * 0.9,
+                getPret(comanda) * 0.95,
                 getTip(comanda),
 
             )
