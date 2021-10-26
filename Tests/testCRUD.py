@@ -31,3 +31,12 @@ def testModifComanda():
     assert getGen(getbyID("2", l)) == "Nuvela"
     assert getPret(getbyID("2", l)) == 10
     assert getTip(getbyID("2", l)) == "gold"
+
+def testGetById():
+    l = []
+    l = adaugaVanzare("1", "Pirati din Caraibe", "Explorare", 45, "gold", l)
+    l = adaugaVanzare("2", "Alba ca zapada", "Basm", 25, "silver", l)
+    l = adaugaVanzare("3", "Cenusareasa", "Basm", 30, "none", l)
+    assert getbyID("1",l) == ["1", "Pirati din Caraibe", "Explorare", 45, "gold"]
+    assert getbyID("2",l) == ["2", "Alba ca zapada", "Basm", 25, "silver"]
+    assert getbyID("3",l) == ["3", "Cenusareasa", "Basm", 30, "none"]
