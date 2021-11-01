@@ -9,3 +9,4 @@ def testVanzare():
     assert getPret(comanda) == 12.5
     assert getGen(comanda) == "Basm"
     assert getTip(comanda) == "none" 
+

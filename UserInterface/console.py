@@ -1,12 +1,14 @@
 from Domain.librarie import toString
 from Logic.CRUD import adaugaVanzare, modificareVanzare, stergereVanzare
-from Logic.functionalitati import discount
+from Logic.functionalitati import determinaMinimPreturi, discount, modificareGenDupaTitlu
 
 def printmenu():
     print("1. Adaugare comanda ")
     print("2. Stergere comanda ")
     print("3. Modifica comanda ")
     print("4. Fa discount in functie de tipul reduceri ")
+    print("5. Modifica genul unei vanzari dupa un titlu dat ")
+    print("6. Determina prețului minim pentru fiecare gen")
     print("a. Afisare comenzi ")
     print("x. Iesire")
 
@@ -21,6 +23,14 @@ def addComanda(lista):
 def stergComanda(lista):
     id = input("Dati id ul unei comenzi: ")
     return stergereVanzare(id,lista)
+
+
+def modifGenDupaTitlu(lista):
+    titlu = input("Dati titlu pentru care doriti sa modificati genul: ")
+    gen = input("Genul nou: ")
+    
+    return modificareGenDupaTitlu(titlu, gen, lista)
+
 
 def modifComanda(lista):
     id = input("Dati noul ID: ")
@@ -37,6 +47,14 @@ def arata(lista):
 def aplicDiscount(lista):
     return discount(lista)
 
+
+def determinaMin(lista):
+    listaPreturi = determinaMinimPreturi(lista)
+    for pret in listaPreturi:
+        print(pret)
+        
+
+
 def runMenu(lista):
     while True:
         printmenu()
@@ -49,6 +67,10 @@ def runMenu(lista):
             lista = modifComanda(lista)
         elif optiune =="4":
             lista = aplicDiscount(lista)
+        elif optiune =="5":
+            lista = modifGenDupaTitlu(lista)    
+        elif optiune == "6":
+            lista = determinaMin(lista)    
         elif optiune =="a":
             arata(lista)
         elif optiune =="x":
