@@ -10,7 +10,7 @@ def printmenu():
     print("5. Modifica genul unei vanzari dupa un titlu dat ")
     print("6. Determina prețului minim pentru fiecare gen")
     print("a. Afisare comenzi ")
-    print("x. Iesire")
+    print("x. Iesire din interfata meniu")
 
 def addComanda(lista):
     id = input("Dati ID: ")
@@ -74,7 +74,7 @@ def runMenu(lista):
         elif optiune =="a":
             arata(lista)
         elif optiune =="x":
-            break
+            return lista
         else:
             print("Optiune incorecta! Reincercati: ")
 
