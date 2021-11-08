@@ -15,7 +15,11 @@ def adaugaVanzare(id, titlu, gen, pret, tip, lista):
     Returns:
         [list]: [returneaza lista continand atat elementele vechi cat si cele noi]
     """
-    comanda = creazaVanzare(id, titlu, gen, pret, tip)
+    
+    if getbyID(id,lista) is not None:
+        raise ValueError("Id-ul exista deja!")
+    else:
+        comanda = creazaVanzare(id, titlu, gen, pret, tip)
     return lista+[comanda]
 
 

@@ -17,13 +17,15 @@ def runLine(lista):
         for x in listaComenzi:
             listaExecut = []
             listaExecut = x.split(",")
-            for i in range(len(listaExecut)):
-                listaExecut[i].strip() 
+            l = []
+            for y in listaExecut:
+                l.append(y.lstrip())
+            listaExecut = l[:]
             if listaExecut[0] == "add":
                 try:
                     lista = adaugaVanzare(listaExecut[1], listaExecut[2], listaExecut[3], listaExecut[4], listaExecut[5],lista)
-                except ValueError as e:
-                    print("Eroare: {}".format(e))
+                except ValueError as ve:
+                    print("Eroare: {}".format(ve))
             elif listaExecut[0] == "showall":
                 for comanda in lista:
                     print(toString(comanda))
@@ -31,8 +33,8 @@ def runLine(lista):
                 try:
                     id = listaExecut[1]
                     lista = stergereVanzare(id, lista)
-                except ValueError as e:
-                    print("Eroare: {}".format(e))
+                except ValueError as ve:
+                    print("Eroare: {}".format(ve))
             elif listaExecut[0] == "exit":
                 return lista
             else:
