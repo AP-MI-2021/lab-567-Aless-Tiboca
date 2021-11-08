@@ -1,4 +1,4 @@
-from Domain.librarie import creazaVanzare, getId
+from Domain.librarie import creazaVanzare, getId, getTip
 
 
 def adaugaVanzare(id, titlu, gen, pret, tip, lista):
@@ -67,4 +67,6 @@ def getbyID(id,lista):
         if getId(comanda) == id:
             return comanda
     return None
+
+
      

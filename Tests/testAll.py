@@ -1,5 +1,6 @@
 from Tests.testDomain import testVanzare
 from Tests.testCRUD import testAdaugaComanda, testGetById, testModifComanda, testSterge
+from Tests.testFunct import testFunct
 
 def runAllTests():
     testVanzare()
@@ -7,3 +8,4 @@ def runAllTests():
     testModifComanda()
     testSterge()
     testGetById()
+    testFunct()

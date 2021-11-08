@@ -11,7 +11,7 @@ def creazaVanzare(id, titlu, gen, pret, tip):
     Returns:
         un dictionar ce reprezinta o vanzare a unei carti
     """
-    return [id, titlu, gen, float(pret), tip]
+    return [id, titlu, gen, pret, tip]
 
 def getId(comanda):
     return comanda[0]

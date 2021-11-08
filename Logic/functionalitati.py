@@ -63,3 +63,41 @@ def determinaMinimPreturi(lista):
                     minim = pret
         listaPreturi.append(minim)
     return listaPreturi
+
+
+def swap(list, pos1, pos2):
+     
+    first = list.pop(pos1)  
+    second = list.pop(pos2-1)
+    list.insert(pos1, second) 
+    list.insert(pos2, first) 
+     
+    return list
+
+
+def ordonareDupaPret(lista):
+    lista.sort(key = getPret)
+    return lista
+
+
+def titluriDistinctePentruGen(lista):
+    newGen = []
+    cntGen = []
+
+    for comanda in lista:
+        ok = 1
+        for gen in newGen:
+            if getGen(comanda) == gen:
+                ok = 0
+        if ok == 1:
+            newGen.append(getGen(comanda))
+
+    for gen in newGen:
+        c = 0
+        for comanda in lista:
+            if getGen(comanda) == gen:
+                c=c+1
+        cntGen.append(c)
+
+    for i in range(len(newGen)):
+        print(newGen[i]," ",cntGen[i])
