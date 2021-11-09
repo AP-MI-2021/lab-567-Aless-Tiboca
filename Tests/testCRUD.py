@@ -40,3 +40,10 @@ def testGetById():
     assert getbyID("1",l) == ["1", "Pirati din Caraibe", "Explorare", 45, "gold"]
     assert getbyID("2",l) == ["2", "Alba ca zapada", "Basm", 25, "silver"]
     assert getbyID("3",l) == ["3", "Cenusareasa", "Basm", 30, "none"]
+
+
+def testCrud():
+    testGetById()
+    testModifComanda()
+    testSterge()
+    testAdaugaComanda()

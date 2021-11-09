@@ -48,31 +48,21 @@ def listaGenuri(lista):
             listaNoua.append(gen)
     return listaNoua
 
-def determinaMinimPreturi(lista):
-    listaNoua = listaGenuri(lista)
-    listaPreturi = []
-    for i in listaNoua:
-        minim = None
-        for comanda in lista:
-            gen = getGen(comanda)
-            pret = getPret(comanda)
-            if gen == i:
-                if minim == None:
-                    minim = pret
-                elif pret < minim:
-                    minim = pret
-        listaPreturi.append(minim)
-    return listaPreturi
 
-
-def swap(list, pos1, pos2):
-     
-    first = list.pop(pos1)  
-    second = list.pop(pos2-1)
-    list.insert(pos1, second) 
-    list.insert(pos2, first) 
-     
-    return list
+def pretMinimDupaGen(lista):
+    """
+    Functia creaza un dictionar cu fiecare gen si pretul minim corespunzator acesteia
+    """
+    rezultat = {}
+    for vanzare in lista:
+        gen = getGen(vanzare)
+        pret = getPret(vanzare)
+        if gen in rezultat:  # verifica daca e in dicitonar
+            if pret < rezultat[gen]:
+                rezultat[gen] = pret
+        else:  # daca nu e in dictionar il pune
+            rezultat[gen] = pret
+    return rezultat
 
 
 def ordonareDupaPret(lista):
