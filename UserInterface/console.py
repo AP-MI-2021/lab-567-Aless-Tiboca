@@ -5,7 +5,7 @@ from Logic.functionalitati import discount, modificareGenDupaTitlu, ordonareDupa
 def printmenu():
     print("1. Adaugare comanda ")
     print("2. Stergere comanda ")
-    print("3. Modifica comanda ")
+    print("3. Modifica comanda dupa un id")
     print("4. Fa discount in functie de tipul reduceri ")
     print("5. Modifica genul unei vanzari dupa un titlu dat ")
     print("6. Determina prețului minim pentru fiecare gen")
@@ -15,6 +15,20 @@ def printmenu():
     print("r. Redo")
     print("a. Afisare comenzi ")
     print("x. Iesire din interfata meniu")
+
+
+def undo(lista, undo_list, redo_list):
+    if len(undo_list) > 0:
+        redo_list.append(lista)
+        lista = undo_list.pop() 
+    return lista
+
+
+def redo(lista, undo_list, redo_list):
+    if len(redo_list) > 0:
+        undo_list.append(lista)
+        lista = redo_list.pop()
+    return lista
 
 
 def addComanda(lista, undoList, redoList):
@@ -57,7 +71,7 @@ def modifGenDupaTitlu(lista, undoList, redoList):
 
 def modifComanda(lista, undoList, redoList):
     try:
-        id = input("Dati noul ID: ")
+        id = input("Dati ID-ul: ")
         titlu = input("Titlu nou: ")
         gen = input("Genul nou: ")
         pret = input("Pret nou: ")

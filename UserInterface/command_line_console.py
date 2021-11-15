@@ -23,7 +23,9 @@ def runLine(lista):
             listaExecut = l[:]
             if listaExecut[0] == "add":
                 try:
-                    lista = adaugaVanzare(listaExecut[1], listaExecut[2], listaExecut[3], listaExecut[4], listaExecut[5],lista)
+                    if listaExecut[5] != "none" and listaExecut[5] != "silver" and listaExecut[5] != "gold":
+                        raise ValueError("Tipul de reducere introdus este gresit")
+                    lista = adaugaVanzare(listaExecut[1], listaExecut[2], listaExecut[3], listaExecut[4], listaExecut[5], lista)
                 except ValueError as ve:
                     print("Eroare: {}".format(ve))
             elif listaExecut[0] == "showall":

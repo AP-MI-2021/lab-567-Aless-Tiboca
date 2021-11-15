@@ -1,6 +1,6 @@
-from Domain.librarie import getGen, getPret
-from Logic.CRUD import adaugaVanzare, getbyID, modificareVanzare
-from Logic.functionalitati import discount, modificareGenDupaTitlu
+from Domain.librarie import getGen, getId, getPret
+from Logic.CRUD import adaugaVanzare, getbyID
+from Logic.functionalitati import discount, modificareGenDupaTitlu, ordonareDupaPret, pretMinimDupaGen
 
 
 def testAplicReduceri():
@@ -48,7 +48,7 @@ def testModificareGenDupaTitlu():
     lista = []
     lista = adaugaVanzare("1", "Harap Alb", "fantastica", 100.0, "silver", lista)
     lista = adaugaVanzare("2", "Fat Frumos din lacrima", "fantastica", 100.0, "gold", lista)
-    lista = adaugaVanzare("3", "Povestea micii sirene", "apa", 280.0, "none", lista)
+    lista = adaugaVanzare("3", "Povestea micii sirene", "basm", 280.0, "none", lista)
 
     titlu = "Harap Alb"
     genModificat = "poveste"
@@ -65,8 +65,35 @@ def testModificareGenDupaTitlu():
     assert getGen(getbyID("3", lista)) == genModificat
 
 
+def testPretMinDupaGen():
+    lista = []
+    lista = adaugaVanzare("1", "Harap Alb", "fantastica", 100.0, "silver", lista)
+    lista = adaugaVanzare("2", "Fat Frumos din lacrima", "fantastica", 150.0, "gold", lista)
+    lista = adaugaVanzare("3", "Povestea micii sirene", "basm", 280.0, "none", lista)
+
+    rezultat = pretMinimDupaGen(lista)
+
+    assert len(rezultat) == 2
+    assert rezultat["fantastica"] == 100.0
+    assert rezultat["basm"] == 280.0
+
+
+def testCrescDupaPret():
+    lista = []
+    lista = adaugaVanzare("1", "Harap Alb", "fantastica", 300.0, "silver", lista)
+    lista = adaugaVanzare("2", "Fat Frumos din lacrima", "fantastica", 150.0, "gold", lista)
+    lista = adaugaVanzare("3", "Povestea micii sirene", "apa", 280.0, "none", lista)
+
+    rezultat = ordonareDupaPret(lista)
+
+    assert getId(rezultat[0]) == "2"
+    assert getId(rezultat[1]) == "3"
+    assert getId(rezultat[2]) == "1"
+
 
 def testFunct():
     testTitluriDist()
     testModificareGenDupaTitlu()
     testAplicReduceri()
+    testCrescDupaPret()
+    testPretMinDupaGen()
